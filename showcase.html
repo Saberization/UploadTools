@@ -1,3 +1,10 @@
+<!--
+    @Author: guotq
+    @Date: 2018-11-28 16:19:05
+    @Last Modified by: guotq
+    @Last Modified time: 2018-11-28 16:19:05
+    @Description: UploadTools example
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,10 +22,12 @@
         document.getElementById('upload').addEventListener('change', function() {
             // 上传文件
             UploadTools({
-                url: 'http://192.168.202.161/epoint-web-zwdt-76/rest/zwdtAttach/private/attachUpload',
+                url: 'http://58.221.196.11:9090/epoint-web-zwdt/rest/appzwfwAttach/attachUpload',
                 data: {
                     clientguid: '324fb87e-5557-4f04-a101-10ce391ed66e',
-                    attachname: 'fileImage'
+                    attachname: 'fileImage',
+                    source: '本地上传',
+                    accountguid: '11a300a2-102d-4bac-8687-2c0903c5fe96'
                 },
                 files: [{
                     name: 'fileImage',
@@ -27,8 +36,8 @@
                 beforeSend: function() {
                     console.log('beforeSend');
                 },
-                success: function() {
-                    console.log('success');
+                success: function(response) {
+                    console.log(response);
                 },
                 error: function() {
                     console.log('error');
