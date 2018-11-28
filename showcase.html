@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="format-detection" content="telephone=no" />
+    <title>UploadTools example</title>
+</head>
+<body>
+    <input type="file" id="upload">
+    
+    <script src="./js/UploadTools.js"></script>
+    <script>
+        document.getElementById('upload').addEventListener('change', function() {
+            // 上传文件
+            UploadTools({
+                url: 'http://192.168.202.161/epoint-web-zwdt-76/rest/zwdtAttach/private/attachUpload',
+                data: {
+                    clientguid: '324fb87e-5557-4f04-a101-10ce391ed66e',
+                    attachname: 'fileImage'
+                },
+                files: [{
+                    name: 'fileImage',
+                    file: this.files[0]
+                }],
+                beforeSend: function() {
+                    console.log('beforeSend');
+                },
+                success: function() {
+                    console.log('success');
+                },
+                error: function() {
+                    console.log('error');
+                },
+                complete: function() {
+                    console.log('complete');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
